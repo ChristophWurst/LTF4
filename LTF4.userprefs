@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="LTF4/Program.cs">
+    <Files>
+      <File FileName="LTF4/Program.cs" Line="21" Column="4" />
+      <File FileName="LTF4/Process.cs" Line="29" Column="6" />
+      <File FileName="LTF4/Movement.cs" Line="35" Column="26" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

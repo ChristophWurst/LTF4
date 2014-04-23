@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTF4", "LTF4\LTF4.csproj", "{7B09903B-DDA0-4991-96D7-289B9EB934FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B09903B-DDA0-4991-96D7-289B9EB934FB}.Debug|x86.ActiveCfg = Debug|x86
+		{7B09903B-DDA0-4991-96D7-289B9EB934FB}.Debug|x86.Build.0 = Debug|x86
+		{7B09903B-DDA0-4991-96D7-289B9EB934FB}.Release|x86.ActiveCfg = Release|x86
+		{7B09903B-DDA0-4991-96D7-289B9EB934FB}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = LTF4\LTF4.csproj
+	EndGlobalSection
+EndGlobal
