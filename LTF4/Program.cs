@@ -1,17 +1,11 @@
 using System;
 using LTF4;
 using MonoBrickFirmware.UserInput;
-using MonoBrickFirmware.Display;
-using MonoBrickFirmware.Display.Dialogs;
 
 namespace LTF4
 {
 	class MainClass
 	{
-		public static void MainLoop() {
-
-		}
-
 		public static void Main (string[] args)
 		{
 			//TODO: little menu
