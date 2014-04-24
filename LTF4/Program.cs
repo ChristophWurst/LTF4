@@ -14,6 +14,9 @@ namespace LTF4
 
 		public static void Main (string[] args)
 		{
+			//TODO: little menu
+			//TODO: init dialog
+
 			Log.Info("Lego Task Force 4");
 			Time.WaitSec ();
 
@@ -30,6 +33,7 @@ namespace LTF4
 
 			//start program
 			p.Start ();
+			//TODO: start when finished init and button pushed
 		}
 	}
 }
