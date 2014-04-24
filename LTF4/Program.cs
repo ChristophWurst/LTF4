@@ -20,7 +20,6 @@ namespace LTF4
 			Log.Info("Lego Task Force 4");
 			Time.WaitSec ();
 
-
 			Process p = new Process ();
 			ButtonEvents but = new ButtonEvents();
 
