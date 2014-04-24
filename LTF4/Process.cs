@@ -50,6 +50,8 @@ namespace LTF4
 		}
 
 		public Process() {
+			//TODO: ceate process for each task
+
 			Log.Debug ("process initializing");
 			this.proc = new Thread (new ThreadStart (Loop));
 			this.speak = new Speaker(100);
