@@ -73,6 +73,7 @@ namespace LTF4
 		public void Stop() {
 			Log.Debug ("process stopping");
 			running = false;
+			//wait for threat to finish
 			proc.Join ();
 			Log.Debug ("process stopped");
 		}
