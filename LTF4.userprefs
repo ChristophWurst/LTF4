@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="LTF4/Process.cs">
     <Files>
-      <File FileName="LTF4/Program.cs" Line="36" Column="54" />
-      <File FileName="LTF4/Process.cs" Line="24" Column="5" />
+      <File FileName="LTF4/Program.cs" Line="14" Column="4" />
+      <File FileName="LTF4/Process.cs" Line="19" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

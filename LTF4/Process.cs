@@ -25,6 +25,7 @@ namespace LTF4
 					//move back a little bit
 					this.move.Backward (90, 700);
 					//turn
+					//TODO: random turn
 					this.move.TurnLeft (180);
 					//move on
 					this.move.Forward (50);
