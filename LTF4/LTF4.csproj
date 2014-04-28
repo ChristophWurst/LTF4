@@ -42,10 +42,17 @@
     <Compile Include="Movement.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Time.cs" />
-    <Compile Include="Process.cs" />
+    <Compile Include="Processes\Process.cs" />
+    <Compile Include="Processes\Test_FindEdge.cs" />
+    <Compile Include="Processes\Test_FindObject.cs" />
+    <Compile Include="Processes\Test_FriendEnemy.cs" />
+    <Compile Include="Processes\Test_MoveAndFind.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Processes\" />
   </ItemGroup>
 </Project>
