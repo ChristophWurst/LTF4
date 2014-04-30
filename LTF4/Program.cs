@@ -15,7 +15,7 @@ namespace LTF4
 			Log.Info("Lego Task Force 4");
 			Time.WaitSec ();
 
-			Process p = new Test_FriendEnemy ();
+			Process p = new Test_MoveTouch ();
 			ButtonEvents but = new ButtonEvents();
 
 			//stop program if user presses escape button

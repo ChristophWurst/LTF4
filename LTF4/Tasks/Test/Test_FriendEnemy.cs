@@ -22,7 +22,7 @@ namespace LTF4
 						Log.Info ("enemy (red)");
 						break;
 					default:
-						//Log.Info ("unknown color found");
+						Log.Info ("unknown color");
 						break;
 					}
 				}

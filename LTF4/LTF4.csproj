@@ -42,18 +42,23 @@
     <Compile Include="Movement.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Time.cs" />
-    <Compile Include="Processes\Process.cs" />
-    <Compile Include="Processes\Test_FindEdge.cs" />
-    <Compile Include="Processes\Test_FindObject.cs" />
-    <Compile Include="Processes\Test_FriendEnemy.cs" />
-    <Compile Include="Processes\Test_MoveAndFind.cs" />
-    <Compile Include="Processes\Test_DriveStraightForward.cs" />
+    <Compile Include="Tasks\Process.cs" />
+    <Compile Include="Tasks\Escape.cs" />
+    <Compile Include="Tasks\Test\Test_DriveStraightForward.cs" />
+    <Compile Include="Tasks\Test\Test_FindBeep.cs" />
+    <Compile Include="Tasks\Test\Test_FindEdge.cs" />
+    <Compile Include="Tasks\Test\Test_FindObject.cs" />
+    <Compile Include="Tasks\Test\Test_FriendEnemy.cs" />
+    <Compile Include="Tasks\Test\Test_MoveAndFind.cs" />
+    <Compile Include="Tasks\Test\Test_MoveTouch.cs" />
+    <Compile Include="Tasks\Find.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Processes\" />
+    <Folder Include="Tasks\" />
+    <Folder Include="Tasks\Test\" />
   </ItemGroup>
 </Project>
