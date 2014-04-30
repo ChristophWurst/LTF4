@@ -5,7 +5,7 @@ using MonoBrickFirmware.Sensors;
 
 namespace LTF4
 {
-	public class Test_FriendEnemy : Process
+	public class Test_FriendEnemy : Task
 	{
 		private IRSensor dist;
 		private EV3ColorSensor color;

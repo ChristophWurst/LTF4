@@ -5,7 +5,7 @@ using MonoBrickFirmware.Sensors;
 
 namespace LTF4
 {
-	public class Escape : Process
+	public class Escape : Task
 	{
 		private Movement move;
 		private TouchSensor touch;

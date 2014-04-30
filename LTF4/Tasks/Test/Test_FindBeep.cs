@@ -6,7 +6,7 @@ using MonoBrickFirmware.Sound;
 
 namespace LTF4
 {
-	public class Test_FindBeep : Process
+	public class Test_FindBeep : Task
 	{
 		private Movement move;
 		private IRSensor dist;

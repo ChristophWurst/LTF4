@@ -5,7 +5,7 @@ using MonoBrickFirmware.Sensors;
 
 namespace LTF4
 {
-	public class Test_DriveStraightForward : Process
+	public class Test_DriveStraightForward : Task
 	{
 		private Movement move;
 

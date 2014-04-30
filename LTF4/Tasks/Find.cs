@@ -4,7 +4,7 @@ using LTF4;
 
 namespace LTF4
 {
-	public class Find : Process
+	public class Find : Task
 	{
 		internal override void Loop() {
 			while (running) {

@@ -5,7 +5,7 @@ using MonoBrickFirmware.Sensors;
 
 namespace LTF4
 {
-	public class Test_FindObject : Process
+	public class Test_FindObject : Task
 	{
 		private Movement move;
 		private IRSensor dist;
