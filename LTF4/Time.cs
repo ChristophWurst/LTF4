@@ -1,6 +1,6 @@
 using System;
 
-namespace LTF4
+namespace Robot
 {
 	public class Time
 	{

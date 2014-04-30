@@ -1,7 +1,7 @@
 using System;
 using MonoBrickFirmware.Display;
 
-namespace LTF4
+namespace Robot
 {
 	public class Log
 	{

@@ -1,10 +1,10 @@
 using System;
 using System.Threading;
-using LTF4;
+using Robot;
 using MonoBrickFirmware.Sensors;
 using MonoBrickFirmware.Sound;
 
-namespace LTF4
+namespace Robot
 {
 	public class Test_FindBeep : Task
 	{

@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
-using LTF4;
+using Robot;
 using MonoBrickFirmware.Sensors;
 
-namespace LTF4
+namespace Robot
 {
 	public class Escape : Task
 	{

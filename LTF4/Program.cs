@@ -1,9 +1,9 @@
 using System;
-using LTF4;
+using Robot;
 using MonoBrickFirmware.UserInput;
 using MonoBrickFirmware.Sound;
 
-namespace LTF4
+namespace Robot
 {
 	class MainClass
 	{
@@ -12,7 +12,7 @@ namespace LTF4
 			//TODO: little menu
 			//TODO: init dialog
 
-			Log.Info("Lego Task Force 4");
+			Log.Info("Robot started");
 			Time.WaitSec ();
 
 			Task t = new Test_MoveTouch ();
@@ -21,7 +21,7 @@ namespace LTF4
 			//stop program if user presses escape button
 			but.EscapePressed += delegate() {
 				t.Stop ();
-				Log.Info ("LTF4 finished");
+				Log.Info ("Robot finished");
 				Time.Wait (500);
 			};
 

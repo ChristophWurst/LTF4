@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTF4", "LTF4\LTF4.csproj", "{7B09903B-DDA0-4991-96D7-289B9EB934FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot", "LTF4\Robot.csproj", "{7B09903B-DDA0-4991-96D7-289B9EB934FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +15,6 @@ Global
 		{7B09903B-DDA0-4991-96D7-289B9EB934FB}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = LTF4\LTF4.csproj
+		StartupItem = LTF4\Robot.csproj
 	EndGlobalSection
 EndGlobal
