@@ -1,8 +1,8 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="LTF4/Program.cs">
     <Files>
-      <File FileName="LTF4/Program.cs" Line="12" Column="23" />
+      <File FileName="LTF4/Program.cs" Line="39" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
