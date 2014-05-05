@@ -14,10 +14,32 @@ namespace Robot
 
 			Log.Info("Robot started");
 			Time.WaitSec ();
+			Log.Info("Press left Button for find mode or right Button for escape mode");
 
 			Task t = new Test_MoveTouch ();
 			ButtonEvents but = new ButtonEvents();
 
+			ButtonEvents start_program = new ButtonEvents ();
+
+
+			//escape mode - right button
+			start_program.RightPressed += delegate() {
+
+				//start program
+				t.Start ();
+				//TODO: start when finished init and button pushed
+
+			};
+
+			//find mode - left button
+			start_program.LeftPressed += delegate() {
+
+
+				//find mode
+
+			};
+
+		
 			//stop program if user presses escape button
 			but.EscapePressed += delegate() {
 				t.Stop ();
@@ -31,9 +53,8 @@ namespace Robot
 			Speaker speaker = new Speaker (100);
 			speaker.Beep (50 ,100);
 
-			//start process
-			t.Start ();
-			//TODO: start when finished init and button pushed
+
+
 		}
 	}
 }
