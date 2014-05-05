@@ -34,6 +34,13 @@ namespace Robot
 			this.sync.On (85, 200, 0, true, false);
 			this.Wait (degrees * 4);
 		}
+		public void TurnRight(int degrees = 90) {
+			Log.Debug ("turn right");
+			this.sync.Brake ();
+			this.sync.On (85, -200, 0, true, false);
+			this.Wait (degrees * 4);
+		}
+
 
 		public void Backward(sbyte speed, int time = 0) {
 			Log.Debug ("move backward");
