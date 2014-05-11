@@ -1,6 +1,8 @@
 using System;
 using System.Threading;
 using Robot;
+using MonoBrickFirmware.UserInput;
+using MonoBrickFirmware.Sound;
 
 namespace Robot
 {
@@ -8,6 +10,7 @@ namespace Robot
 	{
 		internal Boolean running = false;
 		internal Thread proc = null;
+		internal AutoResetEvent wait = false;
 
 		internal virtual void Loop() {}
 		public virtual void Init () {}
