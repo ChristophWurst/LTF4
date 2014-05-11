@@ -3,43 +3,49 @@ using Robot;
 using MonoBrickFirmware.UserInput;
 using MonoBrickFirmware.Sound;
 
-namespace Robot
-{
+using System.Threading;
+
+
+namespace Robot{
+
 	class MainClass
 	{
+
 		public static void Main (string[] args)
 		{
-			//TODO: little menu
 			//TODO: init dialog
 
 			Log.Info("Robot started");
 			Time.WaitSec ();
-			Log.Info("Press left Button for find mode or right Button for escape mode");
+			Log.Info("Left Button = find mode \n Right Button = escape mode");
 
 			Task t = new Test_MoveTouch ();
 			ButtonEvents but = new ButtonEvents();
-
 			ButtonEvents start_program = new ButtonEvents ();
 
+			bool begin = false;
 
-			//escape mode - right button
-			start_program.RightPressed += delegate() {
+			while (!begin) {
 
-				//start program
-				t.Start ();
-				//TODO: start when finished init and button pushed
+				//escape mode - right button
+				start_program.RightPressed += delegate() {
 
+					t = new Escape ();
+					t.Start ();
+					begin = true;
+					//TODO: start when finished init and button pushed
 			};
 
 			//find mode - left button
 			start_program.LeftPressed += delegate() {
 
-
-				//find mode
+				t = new Find ();
+				t.Start ();
+				begin = true;
 
 			};
 
-		
+		}
 			//stop program if user presses escape button
 			but.EscapePressed += delegate() {
 				t.Stop ();
@@ -52,8 +58,6 @@ namespace Robot
 			//beep so user knows init finished
 			Speaker speaker = new Speaker (100);
 			speaker.Beep (50 ,100);
-
-
 
 		}
 	}
