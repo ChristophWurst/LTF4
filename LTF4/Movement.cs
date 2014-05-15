@@ -12,14 +12,14 @@ namespace Robot
 			if (time > 0) {
 				Log.Debug ("time: " + time.ToString());
 				Time.Wait (time);
-				this.Off ();
+				this.Brake ();
 			}
 		}
 
 		public Movement () {
 			Log.Debug("Movement init started");
 			sync = new MotorSync(MotorPort.OutA, MotorPort.OutD);
-			this.Off ();
+			this.Brake ();
 		}
 
 		public void Forward(sbyte speed, int time = 0) {
