@@ -50,8 +50,7 @@ namespace Robot
 
 					this.move.TurnRight ();
 				}
-
-				}
+			
 				Thread.Sleep (0);
 			}
 			move.Brake ();

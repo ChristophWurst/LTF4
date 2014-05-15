@@ -51,10 +51,9 @@ namespace Robot
 					this.move.TurnRight ();
 				}
 
-				}
 				Thread.Sleep (0);
 			}
-		this.move.Brake ();
+		move.Brake ();
 		}
 
 		public override void Init() {
