@@ -6,93 +6,65 @@ using MonoBrickFirmware.Sensors;
 namespace Robot {
 
 	public class Escape : Task {
+		const sbyte speedForward = 100;
+		const int timeBackward = 600;
 
 		private Movement move;
 		private TouchSensor touch;
 		private IRSensor dist;
-		private EV3ColorSensor color;
-		private Random direction_generator;   //for random turn
+		private Random rand;
 	
-		internal override void Loop() {
+		private void DriveBackAndTurnRandom() {
+			this.move.Brake ();
+			//move back a little bit
+			this.move.Backward (90, timeBackward);
 
-			move.Forward (70);
-
-			while (running) {
-
-				if (this.touch.IsPressed ()) {
-					//move back a little bit
-					this.move.Backward (90, 700);
-
-					//generate number between 0 and 1
-					double next_direction = direction_generator.Next (0,1);
-
-					//generate number between 90 and 180 for random degree 
-					int random_degree = direction_generator.Next (90, 180);
-
-					//random turn
-					if (next_direction > 0.5) {
-
-						this.move.TurnLeft (random_degree);
-
-					} else {
-
-						this.move.TurnRight (random_degree);
-					}
-
-					//move on
-					this.move.Forward (70);
-
-				}
-
-				//create random number for random turns while moving forward
-				int random_turn = direction_generator.Next (0,100);
-
-				int rand_deg = direction_generator.Next(70, 130);
-
-				//rand turn + rand degree
-				if(random_turn == 60){
-
-					this.move.TurnLeft (rand_deg);
-
-				}else if (random_turn == 30){
-
-					this.move.TurnRight (rand_deg);
-				}
-
-				//dedected object
-				if (this.dist.Read () < 50) {
-
-					this.move.Backward (90, 700);
-
-					int next_direction = direction_generator.Next (0,1);
-
-					//turn arround
-					if (next_direction > 0.5) {
-
-						this.move.TurnLeft (180);
-
-					} else {
-
-						this.move.TurnRight (180);
-					}
-
-					//and move on
-					this.move.Forward (80);
-				}
-
-				Thread.Sleep (0);
+			//random turn
+			if (rand.Next(1, 3) == 1) {
+				this.move.TurnLeft (rand.Next(90,180));
+			} else {
+				this.move.TurnRight (rand.Next(90,180));
 			}
 
-			this.move.Brake ();
+			//move on
+			this.move.Forward (speedForward);
 		}
 
-	
+		private void CheckTouch() {
+			if (this.touch.IsPressed ()) {
+				Log.Debug ("touch pressed");
+				this.DriveBackAndTurnRandom ();
+			}
+		}
+
+		private void CheckDistance() {
+			if (this.dist.Read () < 30) {
+				Log.Debug ("near object found");
+				this.DriveBackAndTurnRandom ();
+			}
+		}
+
+		internal override void Loop() {
+			try {
+				move.Forward (speedForward);
+				while (running) {
+					this.CheckTouch ();
+					this.CheckDistance ();
+					Thread.Sleep (0);
+				}
+				this.move.Off ();
+			} catch (Exception e) {
+				Console.WriteLine("{0} Exception caught.", e);
+				Log.Error (e.ToString() + " Exception");
+			}
+		}
 			
 		public override void Init() {
 			this.proc = new Thread (new ThreadStart (Loop));
 			this.move = new Movement();
 			this.touch = new TouchSensor(SensorPort.In4);
 			this.dist = new IRSensor (SensorPort.In1, IRMode.Proximity);
+			this.rand = new Random();
 		}
 	}
 }
