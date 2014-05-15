@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Robot;
 using MonoBrickFirmware.UserInput;
+using MonoBrickFirmware.Sensors;
 using MonoBrickFirmware.Sound;
 
 namespace Robot
@@ -10,10 +11,10 @@ namespace Robot
 	{
 		internal Boolean running = false;
 		internal Thread proc = null;
-		internal AutoResetEvent wait = false;
-
 		internal virtual void Loop() {}
 		public virtual void Init () {}
+
+		public Color enemyColor;
 
 		public void Start() {
 			Log.Debug ("process starting");
@@ -24,9 +25,11 @@ namespace Robot
 
 		public void Stop() {
 			Log.Debug ("process stopping");
-			running = false;
-			//wait for threat to finish
-			proc.Join ();
+			if (running) {
+				running = false;
+				//wait for threat to finish
+				proc.Join ();
+			}
 			Log.Debug ("process stopped");
 		}
 	}
