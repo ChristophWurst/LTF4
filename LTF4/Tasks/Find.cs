@@ -4,132 +4,98 @@ using Robot;
 using MonoBrickFirmware.Sensors;
 using MonoBrickFirmware.Sound;
 
-namespace Robot
-{
-	public class Find : Task
-	{
+namespace Robot {
+	public class Find : Task {
+		const sbyte speedForward = 100;
+		const int timeBackward = 600;
 
 		private Movement move;
 		private TouchSensor touch;
 		private IRSensor dist;
 		private EV3ColorSensor color;
 		private Speaker speak;
-		private Random direction_generator;   //for random turn
+		private Random rand;
+		private int loopCount;
 
-		internal override void Loop() {
-		
-			//TODO read enemy color and save it
-			//if enemy color dedected -> touch enemy and beep 
-			//default color -> escape
-
-			bool color_saved = false;
-			Color enemy;
-
-			//get enemy color
-			while (!color_saved) {
-
-				move.Forward (30);
-
-				if (this.color.ReadColor()) {
-
-					enemy = this.color.ReadColor ();
-					color_saved = true;
-				}
-			}
-
-			move.Forward (70);
-
-			while (running) {
-				if (this.touch.IsPressed ()) {
-					//move back a little bit
-					this.move.Backward (90, 700);
-
-					//generate number between 0 and 1
-					double next_direction = direction_generator.Next (0, 1);
-
-					//generate number between 90 and 180 for random degree 
-					int random_degree = direction_generator.Next (90, 180);
-
-					//random turn
-					if (next_direction > 0.5) {
-
-						this.move.TurnLeft (random_degree);
-
-					} else {
-
-						this.move.TurnRight (random_degree);
-					}
-
-					//move on
-					this.move.Forward (70);
-
-				}
-
-				//create random number for random turns while moving forward
-				int random_turn = direction_generator.Next (0, 100);
-
-				if (random_turn == 60) {
-
-					this.move.TurnLeft ();
-
-				} else if (random_turn == 30) {
-
-					this.move.TurnRight ();
-				}
-
-				if (this.dist.Read () < 20) {
-
-					this.move.Forward (40);   //move slow
-
-					if (this.dist.Read () < 5) {
-
-						//found something
-						this.move.Brake ();
-
-						switch (this.color.ReadColor ()) {
-
-						default:
-
-							Log.Info ("found friend!");   //friend -> escape
-
-							this.move.Backward (90, 700);
-
-							int next_direction = direction_generator.Next (0, 1);
-
-								//turn arround
-							if (next_direction > 0.5) {
-
-								this.move.TurnLeft (180);
-
-							} else {
-
-								this.move.TurnRight (180);
-							}
-
-								//and move on
-							this.move.Forward (80);
-
-							break;
-
-						case Color == enemy:
-
-							Log.Info ("found enemy!");  //enemy
-							this.move.Forward (30, 1);
-							this.move.Brake ();
-							speak.Beep (50, 100);
-
-							break;
-						}
-					}
-					Thread.Sleep (0);
-				}
-			}
+		private void DriveBackAndTurnRandom() {
 			this.move.Brake ();
+			//move back a little bit
+			this.move.Backward (90, timeBackward);
+
+			//random turn
+			if (rand.Next(1, 3) == 1) {
+				this.move.TurnLeft (rand.Next(90,180));
+			} else {
+				this.move.TurnRight (rand.Next(90,180));
+			}
+
+			//move on
+			this.move.Forward (speedForward);
 		}
 
+		private void CheckTouch() {
+			if (this.touch.IsPressed ()) {
+				Log.Debug ("touch pressed");
+				this.DriveBackAndTurnRandom ();
+			}
+		}
+
+		private void TurnRandom() {
+			//create random number for random turns while moving forward
+			if (loopCount > 10000) {
+				if (rand.Next (10000) == 60) {
+					this.move.TurnLeft ();
+				} else {
+					this.move.TurnRight ();
+				}
+				loopCount = 0;
+			}
+		}
+
+		private void CheckDistance() {
+			if (this.dist.Read () < 5) {
+				//found something
+				//this.move.Brake ();
+				Thread.Sleep (500);
+				Log.Info("scanning color...");
+				if (this.color.ReadColor () == enemyColor) {
+					Log.Info ("found enemy!");  //enemy
+					this.move.Forward (30, 1);
+					this.move.Brake ();
+					speak.Beep (50, 100);
+				} else {
+					Log.Info ("found friend!");   //friend -> escape
+				}
+				this.DriveBackAndTurnRandom ();
+			}
+		}
+
+		internal override void Loop() {
+			try {
+				move.Forward (speedForward);
+				//this.loopCount = 0;
+				while (running) {
+					this.loopCount++;
+					this.CheckTouch ();
+					//this.TurnRandom ();
+					this.CheckDistance ();
+					Thread.Sleep (0);
+				}
+				this.move.Off ();
+			} catch (Exception e) {
+				Console.WriteLine("{0} Exception caught.", e);
+				Log.Error (e.ToString() + " Exception");
+			}
+		}
 
 		public override void Init() {
 			this.proc = new Thread (new ThreadStart (Loop));
+			this.move = new Movement();
+			this.touch = new TouchSensor(SensorPort.In4);
+			this.color = new EV3ColorSensor(SensorPort.In2);
+			this.dist = new IRSensor (SensorPort.In1, IRMode.Proximity);
+			this.speak = new Speaker (200);
+			this.rand = new Random ();
 		}
 	}
 }
