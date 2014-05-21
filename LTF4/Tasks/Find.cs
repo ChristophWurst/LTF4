@@ -62,7 +62,8 @@ namespace Robot {
 					Log.Info ("found enemy!");  //enemy
 					this.move.Forward (30, 1);
 					this.move.Brake ();
-					speak.Beep (50, 100);
+					speak.Beep (50, 500);
+					speak.Beep(
 				} else {
 					Log.Info ("found friend!");   //friend -> escape
 				}
@@ -94,7 +95,7 @@ namespace Robot {
 			this.touch = new TouchSensor(SensorPort.In4);
 			this.color = new EV3ColorSensor(SensorPort.In2);
 			this.dist = new IRSensor (SensorPort.In1, IRMode.Proximity);
-			this.speak = new Speaker (200);
+			this.speak = new Speaker (100);
 			this.rand = new Random ();
 		}
 	}
