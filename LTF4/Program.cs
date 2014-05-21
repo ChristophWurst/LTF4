@@ -115,7 +115,9 @@ namespace Robot {
 			String red = Color.Red.ToString ().ToUpper ();
 			String green = Color.Green.ToString ().ToUpper ();
 			String blue = Color.Blue.ToString ().ToUpper ();
-			String[] colors = { red, green, blue };
+			String white = Color.White.ToString ().ToUpper ();
+
+			String[] colors = { red, green, blue, white };
 			int curColor = Array.IndexOf (colors, enemyColor.ToString ().ToUpper ());
 
 			var itemEnemyColor = new MenuItemWithOptions<string>(lcd,"Enemy Color", colors, curColor);
@@ -128,6 +130,9 @@ namespace Robot {
 				}
 				if (selection == blue) {
 					enemyColor = Color.Blue;
+				}
+				if (selection == white) {
+					enemyColor = Color.White;
 				}
 			};
 
