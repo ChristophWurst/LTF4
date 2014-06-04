@@ -62,8 +62,8 @@ namespace Robot {
 					Log.Info ("found enemy!");  //enemy
 					this.move.Forward (30, 1);
 					this.move.Brake ();
-					speak.Beep (50, 500);
-					speak.Beep(
+					speak.PlayTone (5000,1000, 500);
+					Thread.Sleep (1000);
 				} else {
 					Log.Info ("found friend!");   //friend -> escape
 				}
